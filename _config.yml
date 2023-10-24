@@ -104,4 +104,4 @@ theme: landscape
 deploy:
   type: git
   repo: https://github.com/ranmaoxuan/ranmaoxuan.github.io.git
-  branch: main
+  branch: gh-pages
