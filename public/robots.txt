@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /categories/*
+Disallow: /tags/*
+Sitemap: https://ranmaoxuan.github.io/sitemap.xml

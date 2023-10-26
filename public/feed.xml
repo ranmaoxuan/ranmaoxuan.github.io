@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <generator uri="https://gohugo.io/" version="0.119.0">Hugo</generator>
+    <title>Ritchey technology blog</title>
+        <subtitle>Blog about my favorite topics</subtitle>
+            <link href="https://ranmaoxuan.github.io/" rel="alternate" type="text/html" title="html" />
+            <link href="https://ranmaoxuan.github.io/feed.xml" rel="self" type="application/atom+xml" title="Atom" />
+    <updated>2023-10-26T16:03:30+08:00</updated>
+    <id>https://ranmaoxuan.github.io/</id>
+</feed>
