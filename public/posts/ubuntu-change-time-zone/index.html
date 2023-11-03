@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>如何在Ubuntu上面修改时区 - Ritchey Ran</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo logo--mixed">
+		<a class="logo__link" href="/" title="Ritchey Ran" rel="home">
+			<div class="logo__item logo__imagebox">
+					<img class="logo__img" src="/images/site-logo.jpeg">
+				</div><div class="logo__item logo__text">
+					<div class="logo__title">Ritchey Ran</div>
+					<div class="logo__tagline">Share technology and life.</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/contact/">
+				
+				<span class="menu__text">Contact</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">如何在Ubuntu上面修改时区</h1>
+			
+		</header>
+		<div class="content post__content clearfix">
+			<p>1、首先在shell终端输入命令 timedatectl 查看当前系统的时区</p>
+<pre tabindex="0"><code>ubuntu@127.0.0.1:~$ timedatectl
+     Local time: Mon 2022-08-08 06:08:01 UTC
+           Universal time: Mon 2022-08-08 06:08:01 UTC
+                 RTC time: Mon 2022-08-08 06:08:01
+                Time zone: Etc/UTC (UTC, +0000)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+</code></pre><p>可以看到我们当前系统的时区是 ETC/UTC,然后我们现在需要把时区修改为 Asia/Shanghai，那应该怎么做，继续往下看吧！</p>
+<p>2、执行修改时区命令：</p>
+<pre tabindex="0"><code> sudo timedatectl set-timezone &#34;Asia/Shanghai&#34;
+</code></pre><p>修改完成后再次查看系统时区：</p>
+<pre tabindex="0"><code>ubuntu@127.0.0.1:~$ timedatectl
+               Local time: Mon 2022-08-08 14:10:04 CST
+           Universal time: Mon 2022-08-08 06:10:04 UTC
+                 RTC time: Mon 2022-08-08 06:10:04
+                Time zone: Asia/Shanghai (CST, +0800)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+</code></pre><p>发现我们的系统时间已经变成了 Asia/Shanghai,至此修改时区成功！</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Linux/" rel="tag">Linux</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://ranmaoxuan.github.io/">
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-addtoany-issue/">Drupal 使用 AddToAny Share Buttons 模块，如何新窗口打开分享链接</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-modules/">Drupal 模块记录</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/ubuntu-change-time-zone/">如何在Ubuntu上面修改时区</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-clear-node-redirect-cache/">在Drupal中如何清除Node重定向缓存</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-change-field-length/">在Drupal9 中增加字段长度而不丢失数据</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-request-subscriber/">Drupal中使用路由监听</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/Develop/">Develop</a></li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/System/">System</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/Drupal/" title="Drupal">Drupal</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/Linux/" title="Linux">Linux</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 Ritchey Ran.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Test - Ritchey technology blog</title>
+	<title>Test - Ritchey Ran</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,11 +23,13 @@
 		<header class="header">
 	<div class="container header__container">
 		
-	<div class="logo">
-		<a class="logo__link" href="/" title="Ritchey technology blog" rel="home">
-			<div class="logo__item logo__text">
-					<div class="logo__title">Ritchey technology blog</div>
-					<div class="logo__tagline">Blog about my favorite topics</div>
+	<div class="logo logo--mixed">
+		<a class="logo__link" href="/" title="Ritchey Ran" rel="home">
+			<div class="logo__item logo__imagebox">
+					<img class="logo__img" src="/images/site-logo.jpeg">
+				</div><div class="logo__item logo__text">
+					<div class="logo__title">Ritchey Ran</div>
+					<div class="logo__tagline">Share technology and life.</div>
 				</div>
 		</a>
 	</div>
@@ -38,13 +40,6 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/posts/my-first-post/">
-				
-				<span class="menu__text">About</span>
-				
-			</a>
-		</li>
-		<li class="menu__item">
 			<a class="menu__link" href="/">
 				
 				<span class="menu__text">Home</span>
@@ -54,14 +49,28 @@
 		<li class="menu__item">
 			<a class="menu__link" href="">
 				
-				<span class="menu__text">Products</span>
+				<span class="menu__text">Blog</span>
 				
 			</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="">
 				
-				<span class="menu__text">Services</span>
+				<span class="menu__text">Books</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="">
+				
+				<span class="menu__text">Contact</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
 				
 			</a>
 		</li>
@@ -91,13 +100,38 @@
 
 
 			</div>
-			
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://ranmaoxuan.github.io/">
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/posts/my-first-post/">About</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/my-first-post1/">My First Post1</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/test/">Test</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/Develop/" title="Develop">Develop</a>
+	</div>
+</div>
+</aside>
 		</div>
 		<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2023 Ritchey technology blog.
+			&copy; 2023 Ritchey Ran.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

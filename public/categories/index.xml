@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Ritchey Ran</title>
+    <link>https://ranmaoxuan.github.io/categories/</link>
+    <description>Recent content in Categories on Ritchey Ran</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>ranmaoxuan.github.io</copyright>
+    <lastBuildDate>Fri, 03 Nov 2023 16:41:27 +0800</lastBuildDate>
+    <atom:link href="https://ranmaoxuan.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Develop</title>
+      <link>https://ranmaoxuan.github.io/categories/Develop/</link>
+      <pubDate>Fri, 03 Nov 2023 16:41:27 +0800</pubDate>
+      <guid>https://ranmaoxuan.github.io/categories/Develop/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>System</title>
+      <link>https://ranmaoxuan.github.io/categories/System/</link>
+      <pubDate>Fri, 03 Nov 2023 16:36:29 +0800</pubDate>
+      <guid>https://ranmaoxuan.github.io/categories/System/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

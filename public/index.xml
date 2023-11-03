@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ritchey Ran</title>
+    <link>https://ranmaoxuan.github.io/</link>
+    <description>Recent content on Ritchey Ran</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>ranmaoxuan.github.io</copyright>
+    <lastBuildDate>Fri, 03 Nov 2023 16:41:27 +0800</lastBuildDate>
+    <atom:link href="https://ranmaoxuan.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Drupal 使用 AddToAny Share Buttons 模块，如何新窗口打开分享链接</title>
+      <link>https://ranmaoxuan.github.io/posts/drupal-addtoany-issue/</link>
+      <pubDate>Fri, 03 Nov 2023 16:41:27 +0800</pubDate>
+      <guid>https://ranmaoxuan.github.io/posts/drupal-addtoany-issue/</guid>
+      <description>在Drupal中使用 AddToAny Share Buttons 模块，模块默认是通过window.open打开窗口，如何实现不通过window.open而是直接新窗口打开文件呢？
+请参考下面的issue
+https://www.drupal.org/project/addtoany/issues/3321019</description>
+    </item>
+    <item>
+      <title>Drupal 模块记录</title>
+      <link>https://ranmaoxuan.github.io/posts/drupal-modules/</link>
+      <pubDate>Fri, 03 Nov 2023 16:39:27 +0800</pubDate>
+      <guid>https://ranmaoxuan.github.io/posts/drupal-modules/</guid>
+      <description>针对工作中用到过的模块做如下总结，后续会根据使用过其他模块随时更新</description>
+    </item>
+    <item>
+      <title>如何在Ubuntu上面修改时区</title>
+      <link>https://ranmaoxuan.github.io/posts/ubuntu-change-time-zone/</link>
+      <pubDate>Fri, 03 Nov 2023 16:36:29 +0800</pubDate>
+      <guid>https://ranmaoxuan.github.io/posts/ubuntu-change-time-zone/</guid>
+      <description>今天给大家介绍一下如果修改Ubuntu的时区</description>
+    </item>
+    <item>
+      <title>在Drupal中如何清除Node重定向缓存</title>
+      <link>https://ranmaoxuan.github.io/posts/drupal-clear-node-redirect-cache/</link>
+      <pubDate>Fri, 03 Nov 2023 16:32:47 +0800</pubDate>
+      <guid>https://ranmaoxuan.github.io/posts/drupal-clear-node-redirect-cache/</guid>
+      <description>首先我们来看一段代码，这这段代码里面返回了一个Response，但是这里并没有做任何缓存相关处理的东西</description>
+    </item>
+    <item>
+      <title>在Drupal9 中增加字段长度而不丢失数据</title>
+      <link>https://ranmaoxuan.github.io/posts/drupal-change-field-length/</link>
+      <pubDate>Fri, 03 Nov 2023 16:25:08 +0800</pubDate>
+      <guid>https://ranmaoxuan.github.io/posts/drupal-change-field-length/</guid>
+      <description>在这篇文章中，我将向您展示如何在 drupal中增加字段长度而不丢失数据。</description>
+    </item>
+    <item>
+      <title>Drupal中使用路由监听</title>
+      <link>https://ranmaoxuan.github.io/posts/drupal-request-subscriber/</link>
+      <pubDate>Fri, 03 Nov 2023 15:34:27 +0800</pubDate>
+      <guid>https://ranmaoxuan.github.io/posts/drupal-request-subscriber/</guid>
+      <description>介绍一下在Drupal中使用路由监听来实现访问特定的url，或者根据自定义规则进行路由重定向</description>
+    </item>
+  </channel>
+</rss>

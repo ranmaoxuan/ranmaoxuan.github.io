@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Drupal中使用路由监听 - Ritchey Ran</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="介绍一下在Drupal中使用路由监听来实现访问特定的url，或者根据自定义规则进行路由重定向">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo logo--mixed">
+		<a class="logo__link" href="/" title="Ritchey Ran" rel="home">
+			<div class="logo__item logo__imagebox">
+					<img class="logo__img" src="/images/site-logo.jpeg">
+				</div><div class="logo__item logo__text">
+					<div class="logo__title">Ritchey Ran</div>
+					<div class="logo__tagline">Share technology and life.</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/contact/">
+				
+				<span class="menu__text">Contact</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Drupal中使用路由监听</h1>
+			
+		</header>
+		<div class="content post__content clearfix">
+			<h2 id="introduction">Introduction</h2>
+<p>介绍一下在Drupal中使用路由监听来实现访问特定的url，或者根据自定义规则进行路由重定向</p>
+<h3 id="step1-define-module">Step1: Define module</h3>
+<p>我们首先创建一个自定义模块，模块的名字叫做 <strong>Test redirect</strong>，同时在模块文件夹里面定义模块的基本信息，写在<em><strong>test_redirect.info.yml</strong></em>里面。</p>
+<pre tabindex="0"><code>name: &#39;Test redirect&#39;
+type: module
+description: &#39;This is a test module.&#39;
+core_version_requirement: &#39;^8 || ^9&#39;
+package: &#39;Test&#39;
+</code></pre><h3 id="step2-define-module-service-config-file">Step2: Define module service config file</h3>
+<p>第二部我们给模块注册一个服务，定义一个service文件，在模块文件夹里面定义一下服务信息，写在<em><strong>test_redirect.services.yml</strong></em>里面。</p>
+<pre tabindex="0"><code>services:
+  test.event_subscriber: #服务名称
+    class: Drupal\test\EventSubscriber\RedirectSubscriber # 服务所在的命名空间
+    arguments: [&#39;@current_user&#39;,&#39;@file_url_generator&#39;] #服务构造参数的依赖注入
+    tags: #服务标识，event_subscriber代表我们这个服务是一个时间订阅服务
+      - { name: event_subscriber }
+</code></pre><h3 id="step3-create-redirectsubscriber-file">Step3: Create RedirectSubscriber file</h3>
+<p>在最后一步中，我们根据在模块服务配置文件中创建的内容，来自定义一个重定向的时间订阅类，在类里面去处理我们自己的业务逻辑，大概代码如下，关键部分我会给出解释。</p>
+<pre tabindex="0"><code>&lt;?php
+
+
+namespace Drupal\test\EventSubscriber;
+
+use Drupal\Core\File\FileUrlGeneratorInterface;
+use Drupal\Core\Routing\TrustedRedirectResponse;
+use Drupal\node\NodeInterface;
+use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Drupal\Core\Session\AccountInterface;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+
+/**
+ * News release redirect subscriber.
+ */
+
+class RedirectSubscriber implements EventSubscriberInterface {
+
+  /**
+   * The current user.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+
+  protected $currentUser;
+
+  /**
+   * The FileUrlGeneratorInterface service.
+   *
+   * @var \Drupal\Core\File\FileUrlGeneratorInterface
+   */
+
+  protected $fileUrlGenerator;
+
+  /**
+   * DeleteAssets constructor.
+   *
+   * @param \Drupal\Core\Session\AccountInterface $current_user
+   *   The current user.
+   * @param \Drupal\Core\File\FileUrlGeneratorInterface $file_url_generator
+   *   The FileUrlGeneratorInterface service.
+   */
+
+  public function __construct(AccountInterface $current_user,FileUrlGeneratorInterface $file_url_generator) {
+    $this-&gt;currentUser = $current_user;
+    $this-&gt;fileUrlGenerator = $file_url_generator;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+
+  public function checkForRedirection(RequestEvent $event) {
+    #判断当前访问路由的用户如果不是匿名用户直接返回
+    if (!$this-&gt;currentUser-&gt;isAnonymous()) {
+      return;
+    }
+    $attr = $event-&gt;getRequest()-&gt;attributes;
+    /**
+     * @var \Drupal\node\NodeInterface
+     */
+    $node = $attr-&gt;get(&#39;node&#39;);
+    #从当前路由里面获取node，如果有node，并且node的type是basic，并且这个node已经是发布状态才进行下一步的处理逻辑。
+    if ($node instanceof NodeInterface &amp;&amp; $node-&gt;bundle() == &#39;basic&#39; &amp;&amp; $node-&gt;isPublished()) {
+      #如果这个node有field_pdf这个字段，并且他是一个media entity就会获取这个media对应的file文件地址，并从定向到这个file文件地址去
+      if ($node-&gt;hasField(&#39;field_pdf&#39;) &amp;&amp; $media = $node-&gt;get(&#39;field_pdf&#39;)-&gt;entity) {
+        $file = $this-&gt;mediaTool-&gt;getMediaFile($media);
+        $event-&gt;setResponse(new RedirectResponse($this-&gt;fileUrlGenerator-&gt;generateAbsoluteString($file-&gt;getFileUri())));
+      }
+      #如果这个node有field_url 字段，并且field_url字段有值，就会从定向到field_url字段的值上去，这个field_url字段有可能是一个外部的url，比如说是https://www.google.com 所以我们这里需要用Drupal的TrustedRedirectResponse去设置返回的url，如果这个路由不是Drupal内部的路由，用RedirectResponse会抛出一个错误。
+      elseif ($node-&gt;hasField(&#39;field_url&#39;) &amp;&amp; !$node-&gt;get(&#39;field_url&#39;)-&gt;isEmpty()) {
+        $target_url = $node-&gt;get(&#39;field_url&#39;)-&gt;uri;
+        if (!empty($target_url)) {
+          $event-&gt;setResponse(new TrustedRedirectResponse($target_url));
+        }
+      }
+    }
+  }
+
+  #主要是在这里定义我们的时间订阅类型，我们这里注册的时间订阅类型为Request，所以Drupal的请求都会走到我们这里的事件订阅进行处理。***checkForRedirection*** 这个方法代表了我们这个事件订阅具体要处理业务的方法
+  /**
+   * {@inheritdoc}
+   */
+  public static function getSubscribedEvents() {
+    $events[KernelEvents::REQUEST][] = [&#39;checkForRedirection&#39;];
+    return $events;
+  }
+}
+</code></pre><h3 id="done">Done</h3>
+<p>最后通过drush命令清楚drupal缓存 drush cr
+然后刷新页面，就能看到神奇的事情发生了！</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Drupal/" rel="tag">Drupal</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://ranmaoxuan.github.io/">
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-addtoany-issue/">Drupal 使用 AddToAny Share Buttons 模块，如何新窗口打开分享链接</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-modules/">Drupal 模块记录</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/ubuntu-change-time-zone/">如何在Ubuntu上面修改时区</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-clear-node-redirect-cache/">在Drupal中如何清除Node重定向缓存</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-change-field-length/">在Drupal9 中增加字段长度而不丢失数据</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-request-subscriber/">Drupal中使用路由监听</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/Develop/">Develop</a></li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/System/">System</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/Drupal/" title="Drupal">Drupal</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/Linux/" title="Linux">Linux</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 Ritchey Ran.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

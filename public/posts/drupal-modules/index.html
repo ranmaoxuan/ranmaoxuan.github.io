@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Drupal 模块记录 - Ritchey Ran</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo logo--mixed">
+		<a class="logo__link" href="/" title="Ritchey Ran" rel="home">
+			<div class="logo__item logo__imagebox">
+					<img class="logo__img" src="/images/site-logo.jpeg">
+				</div><div class="logo__item logo__text">
+					<div class="logo__title">Ritchey Ran</div>
+					<div class="logo__tagline">Share technology and life.</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/contact/">
+				
+				<span class="menu__text">Contact</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Drupal 模块记录</h1>
+			
+		</header>
+		<div class="content post__content clearfix">
+			<p><em><strong>前言</strong></em></p>
+<blockquote>
+<p>针对工作中用到过的模块做如下总结，后续会根据使用过其他模块随时更新</p>
+</blockquote>
+<hr>
+<ul>
+<li><strong>admin_toolbar</strong></li>
+</ul>
+<blockquote>
+<p>增强管理员菜单功能，提供下拉快捷选项，以及快捷清除缓存等操作。</p>
+</blockquote>
+<ul>
+<li><strong>block_class</strong></li>
+</ul>
+<blockquote>
+<p>提供在block layout里面针对block单独设置class，方便前端样式编写</p>
+</blockquote>
+<ul>
+<li><strong>block_content_permissions</strong></li>
+</ul>
+<blockquote>
+<p>为每种block type设置权限，可以分别控制某个block type的创建，更新，删除等权限</p>
+</blockquote>
+<ul>
+<li><strong>ckeditor_templates</strong></li>
+</ul>
+<blockquote>
+<p>提供ckeditor里面使用固定模板功能，ckeditor里面通用的小组建可以使用这个module</p>
+</blockquote>
+<ul>
+<li><strong>ckeditor_templates_ui</strong></li>
+</ul>
+<blockquote>
+<p>提供UI界面，在线编辑ckeditor template的能力，方便创建模板</p>
+</blockquote>
+<ul>
+<li><strong>editor_file</strong></li>
+</ul>
+<blockquote>
+<p>如果站点不需要启用media，同时想在ckeditor里面上传文件（PDF,XLS)等，可以安装这个模块，可以限制上传文件大小，以及文件类型，和文件目录等</p>
+</blockquote>
+<ul>
+<li><strong>entity_embed</strong></li>
+</ul>
+<blockquote>
+<p>提供在ckeditor里面直接插入block的操作，通过也支持在ckeditor里面插入node，在需要node中间内容插入block | view block的时候很方便</p>
+</blockquote>
+<ul>
+<li><strong>image_link_formatter</strong></li>
+</ul>
+<blockquote>
+<p>提供字段类型是Image的时候，可以设置Image的跳转链接，这样不用腹泻字段模板，方便直接设置链接</p>
+</blockquote>
+<ul>
+<li><strong>menu_breadcrumb</strong></li>
+</ul>
+<blockquote>
+<p>提供通过menu层级直接设置面包屑，同时在特殊页面面包屑title不一致的时候可以创建多个menu来进行优先级覆盖</p>
+</blockquote>
+<ul>
+<li><strong>menu_item_extras</strong></li>
+</ul>
+<blockquote>
+<p>增强Drupal自带的menu能力，可以在menu里面管理字段</p>
+</blockquote>
+<ul>
+<li><strong>menu_link_attributes</strong></li>
+</ul>
+<blockquote>
+<p>增强Drupal自带menu的能力，可以单独设置menu item的属性，属性可以自定义，默认支持设置打开方式，class等</p>
+</blockquote>
+<ul>
+<li><strong>metatag</strong></li>
+</ul>
+<blockquote>
+<p>SEO模块，支持根据content type来设置默认的meta tag，同时可以针对每个node单独设置meta tag</p>
+</blockquote>
+<ul>
+<li><strong>page_specific_class</strong></li>
+</ul>
+<blockquote>
+<p>这个模块支持根据页面的路径，单独在body上面增加class，不需要写自定义代码来实现，支持url 通配，以及正则规则</p>
+</blockquote>
+<ul>
+<li><strong>paragraph_view_mode</strong></li>
+</ul>
+<blockquote>
+<p>支持在关联paragraph的时候，管理员使用不同的view model，主要是用于字段相同，但是页面效果不一样来使用</p>
+</blockquote>
+<ul>
+<li><strong>tb_megamenu</strong></li>
+</ul>
+<blockquote>
+<p>使用这个模块可以在站点创建灵活的mega menu，支持多种配置方式，以及block插入等</p>
+</blockquote>
+<ul>
+<li><strong>path_redirect_import</strong></li>
+</ul>
+<blockquote>
+<p>这个模块主要用重定向规则的导入导出等，方便批量导入规则</p>
+</blockquote>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Drupal/" rel="tag">Drupal</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://ranmaoxuan.github.io/">
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-addtoany-issue/">Drupal 使用 AddToAny Share Buttons 模块，如何新窗口打开分享链接</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-modules/">Drupal 模块记录</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/ubuntu-change-time-zone/">如何在Ubuntu上面修改时区</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-clear-node-redirect-cache/">在Drupal中如何清除Node重定向缓存</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-change-field-length/">在Drupal9 中增加字段长度而不丢失数据</a></li>
+			<li class="widget__item"><a class="widget__link" href="/posts/drupal-request-subscriber/">Drupal中使用路由监听</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/Develop/">Develop</a></li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/System/">System</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/Drupal/" title="Drupal">Drupal</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/Linux/" title="Linux">Linux</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 Ritchey Ran.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>
