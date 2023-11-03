@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <generator uri="https://gohugo.io/" version="0.120.3">Hugo</generator>
-    <title>Ritchey technology blog</title>
+    <title>Develop on Ritchey technology blog</title>
         <subtitle>Blog about my favorite topics</subtitle>
-            <link href="https://ranmaoxuan.github.io/" rel="alternate" type="text/html" title="html" />
-            <link href="https://ranmaoxuan.github.io/feed.xml" rel="self" type="application/atom+xml" title="Atom" />
+            <link href="https://ranmaoxuan.github.io/tags/Develop/" rel="alternate" type="text/html" title="html" />
+            <link href="https://ranmaoxuan.github.io/tags/Develop/feed.xml" rel="self" type="application/atom+xml" title="Atom" />
     <updated>2023-11-03T10:50:43+08:00</updated>
-    <id>https://ranmaoxuan.github.io/</id>
+    <id>https://ranmaoxuan.github.io/tags/Develop/</id>
         <entry>
             <title>About</title>
             <link href="https://ranmaoxuan.github.io/posts/my-first-post/" rel="alternate" type="text/html"  hreflang="en" />
@@ -35,36 +35,5 @@
             </content>  
                                 <category scheme="https://ranmaoxuan.github.io/authors/Ritchey" term="Ritchey" label="Ritchey" />  
                                 <category scheme="https://ranmaoxuan.github.io/tags/Develop" term="Develop" label="Develop" />
-        </entry>
-        <entry>
-            <title>My First Post1</title>
-            <link href="https://ranmaoxuan.github.io/posts/my-first-post1/" rel="alternate" type="text/html"  hreflang="en" />
-            <id>https://ranmaoxuan.github.io/posts/my-first-post1/</id>
-            <published>2023-11-03T10:43:24+08:00</published>
-            <updated>2023-11-03T10:50:11+08:00</updated>
-            <content type="html">
-                &lt;p&gt;123123123131&lt;/p&gt;
-
-            </content>  
-        </entry>
-        <entry>
-            <title>Test</title>
-            <link href="https://ranmaoxuan.github.io/posts/test/" rel="alternate" type="text/html"  hreflang="en" />
-            <id>https://ranmaoxuan.github.io/posts/test/</id>
-            <published>2023-10-26T10:28:09+08:00</published>
-            <updated>2023-11-03T10:50:11+08:00</updated>
-            <content type="html">
-                &lt;div class=&#34;flex align-center gblog-post__anchorwrap&#34;&gt;
-    &lt;h2 id=&#34;test123&#34;
-    &gt;
-        test123
-    &lt;/h2&gt;
-    &lt;a data-clipboard-text=&#34;https://ranmaoxuan.github.io/posts/test/#test123&#34; class=&#34;gblog-post__anchor clip flex align-center&#34; aria-label=&#34;Anchor test123&#34; href=&#34;#test123&#34;&gt;
-        &lt;svg class=&#34;gblog-icon gblog_link&#34;&gt;&lt;use xlink:href=&#34;#gblog_link&#34;&gt;&lt;/use&gt;&lt;/svg&gt;
-    &lt;/a&gt;
-&lt;/div&gt;
-&lt;p&gt;123123&lt;/p&gt;
-
-            </content>  
         </entry>
 </feed>
