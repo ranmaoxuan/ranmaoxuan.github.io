@@ -2,6 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ranmaoxuan.github.io/posts/my-first-post1/</loc>
+    <lastmod>2023-11-03T10:43:24+08:00</lastmod>
+  </url>
+  <url>
     <loc>https://ranmaoxuan.github.io/</loc>
+    <lastmod>2023-11-03T10:43:24+08:00</lastmod>
+  </url>
+  <url>
+    <loc>https://ranmaoxuan.github.io/posts/my-first-post/</loc>
+    <lastmod>2023-10-26T16:02:07+08:00</lastmod>
+  </url>
+  <url>
+    <loc>https://ranmaoxuan.github.io/posts/test/</loc>
+    <lastmod>2023-10-26T10:37:20+08:00</lastmod>
   </url>
 </urlset>
