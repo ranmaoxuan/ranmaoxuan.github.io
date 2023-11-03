@@ -3,26 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ranmaoxuan.github.io/posts/my-first-post/</loc>
-    <lastmod>2023-10-26T16:02:07+08:00</lastmod>
-  </url>
-  <url>
+    <lastmod>2023-11-03T10:50:51+08:00</lastmod>
+  </url><url>
     <loc>https://ranmaoxuan.github.io/posts/my-first-post1/</loc>
     <lastmod>2023-11-03T10:50:11+08:00</lastmod>
-  </url>
-  <url>
+  </url><url>
+    <loc>https://ranmaoxuan.github.io/posts/</loc>
+    <lastmod>2023-11-03T10:50:51+08:00</lastmod>
+  </url><url>
     <loc>https://ranmaoxuan.github.io/</loc>
-    <lastmod>2023-11-03T10:50:11+08:00</lastmod>
-  </url>
-  <url>
+    <lastmod>2023-11-03T10:50:51+08:00</lastmod>
+  </url><url>
     <loc>https://ranmaoxuan.github.io/posts/test/</loc>
     <lastmod>2023-11-03T10:50:11+08:00</lastmod>
-  </url>
-  <url>
+  </url><url>
+    <loc>https://ranmaoxuan.github.io/authors/</loc>
+    <lastmod>2023-11-03T10:50:51+08:00</lastmod>
+  </url><url>
     <loc>https://ranmaoxuan.github.io/tags/Develop/</loc>
-    <lastmod>2023-10-26T16:02:07+08:00</lastmod>
-  </url>
-  <url>
+    <lastmod>2023-11-03T10:50:51+08:00</lastmod>
+  </url><url>
     <loc>https://ranmaoxuan.github.io/authors/Ritchey/</loc>
-    <lastmod>2023-10-26T16:02:07+08:00</lastmod>
+    <lastmod>2023-11-03T10:50:51+08:00</lastmod>
+  </url><url>
+    <loc>https://ranmaoxuan.github.io/tags/</loc>
+    <lastmod>2023-11-03T10:50:51+08:00</lastmod>
   </url>
 </urlset>
