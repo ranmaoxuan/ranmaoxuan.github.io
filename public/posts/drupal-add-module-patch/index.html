@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>如何在Ubuntu上面修改时区 - Ritchey Ran</title>
+	<title>Drupal给模块生成补丁 - Ritchey Ran</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
+	<meta name="description" content="在这篇文章中，我将向您展示如何在Drupal模块中修复问题，并提交到Drupal社区。">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -71,32 +71,33 @@
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">如何在Ubuntu上面修改时区</h1>
+			<h1 class="post__title">Drupal给模块生成补丁</h1>
 			
 		</header>
 		<div class="content post__content clearfix">
-			<p>1、首先在shell终端输入命令 timedatectl 查看当前系统的时区</p>
-<pre tabindex="0"><code>ubuntu@127.0.0.1:~$ timedatectl
-     Local time: Mon 2022-08-08 06:08:01 UTC
-           Universal time: Mon 2022-08-08 06:08:01 UTC
-                 RTC time: Mon 2022-08-08 06:08:01
-                Time zone: Etc/UTC (UTC, +0000)
-System clock synchronized: yes
-              NTP service: active
-          RTC in local TZ: no
-</code></pre><p>可以看到我们当前系统的时区是 ETC/UTC,然后我们现在需要把时区修改为 Asia/Shanghai，那应该怎么做，继续往下看吧！</p>
-<p>2、执行修改时区命令：</p>
-<pre tabindex="0"><code> sudo timedatectl set-timezone &#34;Asia/Shanghai&#34;
-</code></pre><p>修改完成后再次查看系统时区：</p>
-<pre tabindex="0"><code>ubuntu@127.0.0.1:~$ timedatectl
-               Local time: Mon 2022-08-08 14:10:04 CST
-           Universal time: Mon 2022-08-08 06:10:04 UTC
-                 RTC time: Mon 2022-08-08 06:10:04
-                Time zone: Asia/Shanghai (CST, +0800)
-System clock synchronized: yes
-              NTP service: active
-          RTC in local TZ: no
-</code></pre><p>发现我们的系统时间已经变成了 Asia/Shanghai,至此修改时区成功！</p>
+			<h2 id="introduction">Introduction</h2>
+<p>今天给大家介绍一下如何给Drupal模块生成补丁，并提交到Drupal社区中。</p>
+<h3 id="solution">Solution</h3>
+<p>首先我们需要在Drupal社区模块中<a href="https://www.drupal.org/node/add/project-issue">创建一个issue</a>，</p>
+<p><img src="/images/20231110/2023-11-10_09-44.png" alt="Create issue"></p>
+<p>issue创建完成后，会生成一个纯数字，并且唯一的issue number，这个时候我们要找到对应模块的git仓库，然后去clone这个仓库，模块对应的git仓库可以在模块介绍首页找到</p>
+<p><img src="/images/20231110/2023-11-10_09-52.png" alt="Module source code"></p>
+<p>从这里进入后，找到对应模块仓库的clone地址，然后在本地电脑上拉下来这个模块对应的代码，并且根据你当前Drupal项目中使用到对应模块的版本，去创建一个本地分支，分支命名规则如下</p>
+<pre tabindex="0"><code>git checkout -b [issue-number]-[short-description] # e.g. 123456-some-bug
+</code></pre><p>在本地分支创建完成后，就可以在这个分支上面进行你要对这个模块的修改，代码修改完成后需要执行对应的git命令，大概步骤如下</p>
+<pre tabindex="0"><code>git add new.filename #Add change file.
+git commit -m &#34;my new feature&#34; #Commit my change
+git diff origin/BASE_VERSION #对比你的修改和当前分支版本的变动
+git diff origin/BASE_VERSION &gt; PATCH_FILE_NAME.patch #对比你的修改和当前分支版本的变动，并生成补丁文件
+</code></pre><p>到这里我们的补丁文件就生成成功了，这个时候回到你的issue链接里面去，然后上传这个补丁文件，社区里面就能够看到你做的贡献啦！也欢迎大家多多给社区做贡献哟，这样Drupal才能变得更好</p>
+<p><em><strong>注意</strong></em>
+上面代码中的<em>BASE_VERSION</em>代表的是该模块在你项目中对应的版本，如果BASE_VERSION不正确的话会导致补丁无法打上，因为BASE_VERSION不正确的话会导致代码差异较多，和你实际修改的代码不一致</p>
+<hr>
+<p><strong>Reference</strong></p>
+<ul>
+<li><a href="https://www.drupal.org/docs/develop/git/using-git-to-contribute-to-drupal/working-with-patches/making-a-patch%C2%A0">Making a patch
+</a></li>
+</ul>
 
 		</div>
 		<footer class="post__footer">
@@ -105,7 +106,7 @@ System clock synchronized: yes
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
 		<li class="tags__item">
-			<a class="tags__link btn" href="/tags/Linux/" rel="tag">Linux</a>
+			<a class="tags__link btn" href="/tags/Drupal/" rel="tag">Drupal</a>
 		</li>
 	</ul>
 </div>

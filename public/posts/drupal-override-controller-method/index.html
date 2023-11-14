@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>如何在Ubuntu上面修改时区 - Ritchey Ran</title>
+	<title>Drupal override controller function - Ritchey Ran</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,32 +71,84 @@
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">如何在Ubuntu上面修改时区</h1>
+			<h1 class="post__title">Drupal override controller function</h1>
 			
 		</header>
 		<div class="content post__content clearfix">
-			<p>1、首先在shell终端输入命令 timedatectl 查看当前系统的时区</p>
-<pre tabindex="0"><code>ubuntu@127.0.0.1:~$ timedatectl
-     Local time: Mon 2022-08-08 06:08:01 UTC
-           Universal time: Mon 2022-08-08 06:08:01 UTC
-                 RTC time: Mon 2022-08-08 06:08:01
-                Time zone: Etc/UTC (UTC, +0000)
-System clock synchronized: yes
-              NTP service: active
-          RTC in local TZ: no
-</code></pre><p>可以看到我们当前系统的时区是 ETC/UTC,然后我们现在需要把时区修改为 Asia/Shanghai，那应该怎么做，继续往下看吧！</p>
-<p>2、执行修改时区命令：</p>
-<pre tabindex="0"><code> sudo timedatectl set-timezone &#34;Asia/Shanghai&#34;
-</code></pre><p>修改完成后再次查看系统时区：</p>
-<pre tabindex="0"><code>ubuntu@127.0.0.1:~$ timedatectl
-               Local time: Mon 2022-08-08 14:10:04 CST
-           Universal time: Mon 2022-08-08 06:10:04 UTC
-                 RTC time: Mon 2022-08-08 06:10:04
-                Time zone: Asia/Shanghai (CST, +0800)
-System clock synchronized: yes
-              NTP service: active
-          RTC in local TZ: no
-</code></pre><p>发现我们的系统时间已经变成了 Asia/Shanghai,至此修改时区成功！</p>
+			<h2 id="introduction">Introduction</h2>
+<p>今天遇到一个需要覆盖Drupal中一个第三方模块自带的Controller中的function，这里简单介绍一下如何实现的。</p>
+<h2 id="solution">Solution</h2>
+<p>首先我们需要创建一个自定义模块，如果已经有存在的自定义模块，则我们需要在 example_module.services.yml 中定义一个service</p>
+<p><strong>example_module.services.yml</strong></p>
+<pre tabindex="0"><code>services:
+  example_module.route_subscriber:
+    class: Drupal\example_module\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+</code></pre><p>service定义好之后，我们需要定义service对应的类文件</p>
+<p><strong>RouteSubscriber.php</strong></p>
+<pre tabindex="0"><code>&lt;?php
+/**
+ * @file
+ * Contains \Drupal\example_module\Routing\RouteSubscriber.
+ */
+
+// THIS FILE BELONGS AT /example_module/src/Routing/RouteSubscriber.php
+
+namespace Drupal\example_module\Routing;
+
+use Drupal\Core\Routing\RouteSubscriberBase;
+use Symfony\Component\Routing\RouteCollection;
+
+/**
+ * Listens to the dynamic route events.
+ */
+class RouteSubscriber extends RouteSubscriberBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function alterRoutes(RouteCollection $collection) {
+    // Replace &#34;some.route.name&#34; below with the actual route you want to override.
+    if ($route = $collection-&gt;get(&#39;some.route.name&#39;)) {
+      $route-&gt;setDefaults(array(
+        &#39;_controller&#39; =&gt; &#39;\Drupal\example_module\Controller\ExampleModuleController::content&#39;,
+      ));
+    }
+  }
+}
+</code></pre><p>最后在定义自己的Controller，实现对应的方法就好啦</p>
+<p><strong>ExampleModuleController.php</strong></p>
+<pre tabindex="0"><code>&lt;?php
+/**
+ * @file
+ * Contains \Drupal\example_module\Controller\ExampleModuleController.
+ */
+
+// THIS FILE BELONGS AT /example_module/src/Controller/ExampleModuleController.php
+
+namespace Drupal\example_module\Controller;
+
+use Drupal\Core\Controller\ControllerBase;
+
+/**
+ * An example controller.
+ */
+class ExampleModuleController extends ControllerBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function content() {
+    $build = array(
+      &#39;#type&#39; =&gt; &#39;markup&#39;,
+      &#39;#markup&#39; =&gt; t(&#39;Hello World!&#39;),
+    );
+    return $build;
+  }
+}
+</code></pre><p><strong>注意</strong>
+在上面的Controller继承中，我们可以继承需要覆盖的Controller，这样可以用到他的一些内部方法，同时也能够使用到继承Controller中的一些构造属性，以及通过继承覆盖的Controller可以更清晰的标识这个Controller是用来进行覆盖也有Controller中的方法的。</p>
 
 		</div>
 		<footer class="post__footer">
@@ -105,7 +157,7 @@ System clock synchronized: yes
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
 		<li class="tags__item">
-			<a class="tags__link btn" href="/tags/Linux/" rel="tag">Linux</a>
+			<a class="tags__link btn" href="/tags/Drupal/" rel="tag">Drupal</a>
 		</li>
 	</ul>
 </div>
