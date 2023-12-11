@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Contact me - Ritchey Ran</title>
+	<title>在Drupal项目开发阶段中需要初始化的一些东西 - Ritchey Ran</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,6 @@
 
 	<link rel="stylesheet" href="/css/style.css">
 	
-	<link rel="alternate" type="application/rss+xml" href="/contact/index.xml" title="Ritchey Ran">
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
@@ -46,7 +45,7 @@
 				
 			</a>
 		</li>
-		<li class="menu__item menu__item--active">
+		<li class="menu__item">
 			<a class="menu__link" href="/contact/">
 				
 				<span class="menu__text">Contact</span>
@@ -68,26 +67,84 @@
 		<div class="wrapper flex">
 			<div class="primary">
 			
-<main class="main list" role="main">
-	<header class="main__header">
-		<h1 class="main__title">Contact me</h1>
-	</header>
-	<div class="content main__content clearfix">
-		<h3 id="heres-how-to-contact-me">Here&rsquo;s how to contact me.</h3>
-<ul>
-<li>Email: <a href="mailto:ranmaoxuan@gamil.com">ranmaoxuan@gamil.com</a></li>
-<li>Wechat: rmxgpf</li>
-<li>QQ: 1807585194</li>
-<li>Site: <a href="mailto:ranmaoxuan@github.io">ranmaoxuan@github.io</a></li>
-</ul>
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">在Drupal项目开发阶段中需要初始化的一些东西</h1>
+			
+		</header>
+		<div class="content post__content clearfix">
+			<p><em><strong>禁用缓存</strong></em></p>
+<blockquote>
+<p>在Drupal项目中大家最头疼的应该就是各种缓存了，改个代码需要清理缓存，改个模板内容需要清理缓存，总之默认就是改啥都要清理缓存</p>
+</blockquote>
+<p>那我们再开发阶段中怎么避免这个很频繁的清理缓存操作，让我们尽量少花一点时间在这个上面呢，其实官方已经给出了答案，那就是在开发阶段的时候我们可以通过配置来禁用掉缓存，</p>
+<p><a href="https://www.drupal.org/docs/develop/development-tools/disable-caching">Disable caching</a></p>
+<p>目前Drupal10 已经可以很方便的在CMS后台进行设置禁用掉缓存，对于Drupal10以下的项目我们可以通过在配置文件中进行配置的方式来禁用缓存</p>
+<p>development.services.yml</p>
+<pre tabindex="0"><code># Local development services.
+#
+# To activate this feature, follow the instructions at the top of the
+# &#39;example.settings.local.php&#39; file, which sits next to this file.
+parameters:
+  http.response.debug_cacheability_headers: true
+  twig.config:
+    debug: true
+    auto_reload: true
+    cache: false
+services:
+  cache.backend.null:
+    class: Drupal\Core\Cache\NullBackendFactory
+</code></pre><p>Open settings.local.php and make sure development.services.yml is enabled.</p>
+<p>settings.local.php</p>
+<pre tabindex="0"><code>$settings[&#39;container_yamls&#39;][] = DRUPAL_ROOT . &#39;/sites/development.services.yml&#39;;
+</code></pre><p>Change the following to be TRUE if you want to work with enabled css- and js-aggregation:</p>
+<p>settings.local.php</p>
+<pre tabindex="0"><code>$config[&#39;system.performance&#39;][&#39;css&#39;][&#39;preprocess&#39;] = FALSE;
+$config[&#39;system.performance&#39;][&#39;js&#39;][&#39;preprocess&#39;] = FALSE;
+</code></pre><p>Uncomment these lines to disable the Render Cache, disable the Internal Page Cache and disable Dynamic Page Cache:</p>
+<p>settings.local.php</p>
+<pre tabindex="0"><code>$settings[&#39;cache&#39;][&#39;bins&#39;][&#39;render&#39;] = &#39;cache.backend.null&#39;;
+$settings[&#39;cache&#39;][&#39;bins&#39;][&#39;page&#39;] = &#39;cache.backend.null&#39;;
+$settings[&#39;cache&#39;][&#39;bins&#39;][&#39;dynamic_page_cache&#39;] = &#39;cache.backend.null&#39;;
+</code></pre><p>进行以上的设置后，在Drush中再清理一下缓存，然后你就会惊喜的发现后面的修改代码以及模板都不用再去执行清理缓存的操作，当然如果你要是改了一些定义的文件发现不生效的话还是再去清理一遍，比如改了<em>module_name.info.yml</em> 还有 <em>theme_name.info.yml</em> 类似于这种基础的配置文件还是需要去清理缓存</p>
 
-	</div>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/Drupal/" rel="tag">Drupal</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
 </main>
 
 
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="ranmaoxuan/ranmaoxuan.github.io"
+        data-repo-id="R_kgDOKiwg4Q"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOKiwg4c4Ca2FE"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light_high_contrast"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
 			</div>
-			
-<aside class="sidebar"><div class="widget-search widget">
+			<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
 			<input class="widget-search__field" type="search" placeholder="SEARCH…" value="" name="q" aria-label="SEARCH…">

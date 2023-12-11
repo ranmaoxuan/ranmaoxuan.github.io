@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>ranmaoxuan.github.io</copyright>
-    <lastBuildDate>Tue, 14 Nov 2023 16:05:21 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 11 Dec 2023 07:28:59 +0000</lastBuildDate>
     <atom:link href="https://ranmaoxuan.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在Drupal项目开发阶段中需要初始化的一些东西</title>
+      <link>https://ranmaoxuan.github.io/posts/2023-12-11-drupal-project-settings/</link>
+      <pubDate>Mon, 11 Dec 2023 07:28:59 +0000</pubDate>
+      <guid>https://ranmaoxuan.github.io/posts/2023-12-11-drupal-project-settings/</guid>
+      <description>今天记录一下在Drupal项目开发阶段中需要初始化的一些东西，以免忘记以及帮助其他人知道这个事情</description>
+    </item>
     <item>
       <title>Drupal override controller function</title>
       <link>https://ranmaoxuan.github.io/posts/drupal-override-controller-method/</link>
@@ -28,9 +35,7 @@
       <link>https://ranmaoxuan.github.io/posts/drupal-addtoany-issue/</link>
       <pubDate>Fri, 03 Nov 2023 16:41:27 +0800</pubDate>
       <guid>https://ranmaoxuan.github.io/posts/drupal-addtoany-issue/</guid>
-      <description>在Drupal中使用 AddToAny Share Buttons 模块，模块默认是通过window.open打开窗口，如何实现不通过window.open而是直接新窗口打开文件呢？
-请参考下面的issue
-https://www.drupal.org/project/addtoany/issues/3321019</description>
+      <description>在Drupal中使用 AddToAny Share Buttons 模块，模块默认是通过window.open打开窗口，如何实现不通过window.open而是直接新窗口打开文件呢？&#xA;请参考下面的issue&#xA;https://www.drupal.org/project/addtoany/issues/3321019</description>
     </item>
     <item>
       <title>Drupal 模块记录</title>

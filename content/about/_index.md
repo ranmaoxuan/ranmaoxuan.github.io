@@ -14,8 +14,8 @@ tags:
 ### This is my basic information
 ```
 {
-  name: "Ritchey",
-  age: 27,
+  "name": "Ritchey",
+  "age": 27,
   "height": "172cm",
   "base": "China Sichuan Chengdu",
   "github": "https://github.com/ranmaoxuan",
