@@ -42,6 +42,16 @@
           "title": "Categories",
           "name": "categories",
           "type": "categories"
+        },
+        {
+          "title": "summary",
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "title": "thumbnail",
+          "name": "thumbnail",
+          "type": "string"
         }
       ]
     }

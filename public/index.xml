@@ -4,11 +4,18 @@
     <title>Ritchey Ran</title>
     <link>https://ranmaoxuan.github.io/</link>
     <description>Recent content on Ritchey Ran</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>ranmaoxuan.github.io</copyright>
-    <lastBuildDate>Mon, 11 Dec 2023 07:28:59 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Jun 2024 14:13:40 +0800</lastBuildDate>
     <atom:link href="https://ranmaoxuan.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在Drupal中使用Hook修改page title</title>
+      <link>https://ranmaoxuan.github.io/posts/drupal-hook-preprocess-page-title/</link>
+      <pubDate>Wed, 26 Jun 2024 14:13:40 +0800</pubDate>
+      <guid>https://ranmaoxuan.github.io/posts/drupal-hook-preprocess-page-title/</guid>
+      <description>介绍一下如何通过Drupal hook_preprocess_page_title去获取Entity字段模板进行渲染输出</description>
+    </item>
     <item>
       <title>在Drupal项目开发阶段中需要初始化的一些东西</title>
       <link>https://ranmaoxuan.github.io/posts/2023-12-11-drupal-project-settings/</link>
